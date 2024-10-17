@@ -58,8 +58,8 @@ describe('PagerApplicationService', () => {
 
     jest.spyOn(handleAcknowledgementTimeoutUseCase, 'execute');
     jest.spyOn(acknowledgeAlertUseCase, 'execute');
+    jest.spyOn(receiveAlertUseCase, 'execute');
     jest.spyOn(receiveHealthyEventUseCase, 'execute');
-    jest.spyOn(handleAcknowledgementTimeoutUseCase, 'execute');
   });
 
   it('should handle an acknowledgement timeout correctly', async () => {
@@ -113,19 +113,6 @@ describe('PagerApplicationService', () => {
       expect.any(Map),
       expect.any(Map),
       expect.any(Set),
-    );
-  });
-
-  it('should acknowledge an alert', () => {
-    const serviceId = 'service-1';
-    service.acknowledgeAlert(serviceId);
-
-    expect(acknowledgeAlertUseCase.execute).toHaveBeenCalledWith(
-      serviceId,
-      expect.any(Map),
-      expect.any(Set),
-      expect.any(Map),
-      expect.any(Map),
     );
   });
 

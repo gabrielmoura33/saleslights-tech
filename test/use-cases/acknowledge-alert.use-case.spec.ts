@@ -69,14 +69,14 @@ describe('AcknowledgeAlertUseCase - Scenario 3', () => {
       monitoredServices,
       acknowledgedServices,
       alertTimers,
-      currentAlerts, // Passando todos os 5 argumentos necessários
+      currentAlerts,
     );
 
     // Simular o timeout de reconhecimento
     await handleAcknowledgementTimeoutUseCase.execute(
       serviceId,
       monitoredServices,
-      new Map(), // Escalation Policies (não serão usadas)
+      new Map(),
       currentAlerts,
       currentLevels,
       alertTimers,
