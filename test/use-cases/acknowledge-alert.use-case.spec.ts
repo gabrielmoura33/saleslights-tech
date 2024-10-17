@@ -43,7 +43,7 @@ describe('AcknowledgeAlertUseCase - Scenario 3', () => {
     ) as MockNotificationService;
   });
 
-  it('não deve notificar alvos após reconhecimento e timeout subsequente', async () => {
+  it('não deve notificar alvos e não deve definir atraso de reconhecimento após o timeout de reconhecimento', async () => {
     // Dados iniciais
     const monitoredServices = new Map<string, MonitoredService>();
     const currentLevels = new Map<string, number>();
@@ -83,7 +83,7 @@ describe('AcknowledgeAlertUseCase - Scenario 3', () => {
       acknowledgedServices,
     );
 
-    // Verificações
+    // Verifica que nenhum alvo foi notificado
     expect(notificationService.notifications).toEqual([]);
     expect(alertTimers.has(serviceId)).toBe(false);
   });

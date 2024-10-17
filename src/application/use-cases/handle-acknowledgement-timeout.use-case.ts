@@ -6,7 +6,6 @@ import { PagerDomainService } from '@domain/services/pager-domain.service';
 import { ServiceNotFoundError } from '../errors/service-not-found.error';
 import { INotificationService } from '../interfaces/notification-service.interface';
 import { ITimerService } from '../interfaces/timer-service.interface';
-import { AlertAlreadyAcknowledgedError } from '../errors/alert-already-acknowledged.error';
 
 @Injectable()
 export class HandleAcknowledgementTimeoutUseCase {
@@ -25,10 +24,6 @@ export class HandleAcknowledgementTimeoutUseCase {
     alertTimers: Map<string, string>,
     acknowledgedServices: Set<string>,
   ): Promise<void> {
-    if (acknowledgedServices.has(serviceId)) {
-      throw new AlertAlreadyAcknowledgedError(serviceId);
-    }
-
     const monitoredService = monitoredServices.get(serviceId);
     if (!monitoredService) {
       throw new ServiceNotFoundError(serviceId);

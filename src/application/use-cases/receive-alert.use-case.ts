@@ -29,26 +29,22 @@ export class ReceiveAlertUseCase {
     const serviceId = alert.getServiceId();
     let monitoredService = monitoredServices.get(serviceId);
 
-    // Se o serviço não estiver monitorado, criar uma nova instância
     if (!monitoredService) {
       monitoredService = new MonitoredService(serviceId);
       monitoredServices.set(serviceId, monitoredService);
     }
 
-    // Verifica se o alerta deve ser processado (o serviço precisa estar saudável)
     if (this.pagerDomainService.shouldProcessAlert(monitoredService)) {
       this.pagerDomainService.markServiceUnhealthy(monitoredService);
       currentAlerts.set(serviceId, alert);
       const initialLevel = 1;
       currentLevels.set(serviceId, initialLevel);
 
-      // Obter a política de escalonamento para o serviço
       const escalationPolicy = escalationPolicies.get(serviceId);
       if (!escalationPolicy) {
         throw new ServiceNotFoundError(serviceId);
       }
 
-      // Notificar os alvos do primeiro nível
       const targets = this.pagerDomainService.getTargetsForLevel(
         escalationPolicy,
         initialLevel,
@@ -73,7 +69,7 @@ export class ReceiveAlertUseCase {
         15 * 60 * 1000,
       ); // Timeout de 15 minutos
 
-      // Armazenar o ID do timeout no mapa
+      // Armazenar o ID do timeout no map
       const oldTimeoutId = alertTimers.get(serviceId);
       if (oldTimeoutId) {
         this.timerService.clearTimeout(oldTimeoutId);
