@@ -5,8 +5,5 @@
 - [x] Implementar timeout para envio de e-mails
 - [x] Implementar NestScheduler
 - [x] Dividir em use cases
-- [ ] Implementar timeout para envio de SMS
-- [ ] Implementar job para envio de e-mails
-- [ ] Implementar job para envio de SMS
-- [ ] Implementar job para envio de e-mails em lote
-- [ ] Implementar job para envio de SMS em lote
+- [x] Implementar timeout para envio de SMS
+- [ ] Remover codigo antigo de domain service

@@ -1,6 +1,4 @@
 /* eslint-disable @typescript-eslint/no-unused-vars */
-// test/use-cases/acknowledge-alert.use-case.spec.ts
-
 import { Test, TestingModule } from '@nestjs/testing';
 import { AcknowledgeAlertUseCase } from '../../src/application/use-cases/acknowledge-alert.use-case';
 import { HandleAcknowledgementTimeoutUseCase } from '../../src/application/use-cases/handle-acknowledgement-timeout.use-case';
