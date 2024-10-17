@@ -131,13 +131,11 @@ The `PagerApplicationService` project is designed to provide an efficient way to
 
 - **Domain-Driven Design (DDD)**: Ensures a clear separation between business logic and infrastructure.
 - **Escalation Policies**: Allows for flexible alert escalation strategies based on service needs.
-- **Asynchronous Messaging**: Uses RabbitMQ for asynchronous messaging to handle real-time alerts.
 - **Comprehensive Testing**: Includes detailed unit tests to verify the correct behavior of core functionalities.
 
 ### Dependencies
 
 - **NestJS**: A framework for building scalable server-side applications.
-- **RabbitMQ**: Used for messaging between components.
 - **Jest**: For unit testing.
 - **MockTimerService** and **MockNotificationService**: Provide mock implementations for testing without real-world side effects.
 
