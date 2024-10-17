@@ -14,8 +14,6 @@ The `PagerApplicationService` project follows a modular architecture that separa
 - **Application Layer**: Contains use cases that define application-specific business rules. It also includes application services that coordinate use case execution.
 - **Infrastructure Layer**: Handles communication with external services, such as notification systems and timer management.
 
-The service uses RabbitMQ for messaging, which facilitates asynchronous communication between components, making it suitable for handling real-time alerts and notifications.
-
 ### Key Components
 
 - **Entities**: Represent core business objects, such as `Alert`, `MonitoredService`, `EscalationPolicy`, and `Target`.
